@@ -86,7 +86,9 @@ const sketch = (p) => {
 
 
   boardMaterial.needsUpdate = true
+  p5C.style.display = 'none'
   };
+
 };
 
 let sketcHT = new p5(sketch, containerElement);
@@ -166,11 +168,13 @@ p.text('π'
 
 
   shaderMaterial.needsUpdate = true
+    p5C2.style.display = 'none'
   };
+
+
 };
 
 let sketcHT2 = new p5(sketch2, containerElement2);
-
 
 
 const loadingBarElement = document.querySelector('.loading-bar')
