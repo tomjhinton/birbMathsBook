@@ -4,7 +4,7 @@ uniform vec3 uColor;
 uniform vec3 uPosition;
 uniform vec3 uRotation;
 uniform vec2 uResolution;
-// uniform sampler2D uTexture;
+uniform sampler2D uTexture;
 // uniform sampler2D uVideo;
 // uniform sampler2D uVideo2;
 uniform vec2 uMouse;
@@ -472,6 +472,13 @@ void main( )
    backgroundColor.b = smoothstep (lineSmoothness, 0.0, length (uv2.x)); // y axis
 
    coswarp(backgroundColor, 3.);
+   vec4 tex = texture2D(uTexture, vUv);
+
+   if(tex.a != 0.){
+      backgroundColor.rgb = tex.rgb;
+   }
+
+
 
   // backgroundColor += displacement;
   vec3 lightPosition = vec3(2, 2, 7);
@@ -482,7 +489,7 @@ void main( )
   vec4 co = rayMarch(ro, rd, MIN_DIST, MAX_DIST); // closest object
 
   if (co.x > MAX_DIST) {
-    col = backgroundColor; // ray didn't hit anything
+    col = backgroundColor ; // ray didn't hit anything
   } else {
     vec3 p = ro + rd * co.x; // point on sphere or floor we discovered from ray marching
     vec3 normal = calcNormal(p);

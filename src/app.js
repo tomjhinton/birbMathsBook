@@ -23,6 +23,7 @@ const scene = new THREE.Scene()
 
 
 const containerElement = document.getElementById('p5-container');
+const containerElement2 = document.getElementById('p5-container1');
 
 
 let first = 1
@@ -72,10 +73,6 @@ const sketch = (p) => {
 
 
 
-    // p.textAlign(p.TOP)
-
-
-
     p.textSize(50);
 
 
@@ -88,27 +85,75 @@ const sketch = (p) => {
   p5CTex.needsUpdate = true
 
 
-
-  //
-  // yStart+=1
-  // if(yStart === height){
-  //   yStart = -height
-  // }
-// console.log(yStart)
-
-
-
-
-
-
-
-
-    // p.fill(0, 102, 153);
   boardMaterial.needsUpdate = true
   };
 };
 
 let sketcHT = new p5(sketch, containerElement);
+
+
+//Second p5
+
+let p5C2, p5CTex2
+let sportsArr = ['🏄','🏂🏾', '⛷', '🧗' ]
+let sportsArrSelected = 1
+const sketch2 = (p) => {
+
+
+
+  p.preload = function(){
+  // customFont = p.loadFont('./static/BasementGrotesque-Black_v1.202.otf.'); //use  preload to load the custom font
+}
+
+
+  p.setup = function() {
+     // p.frameRate(1.1)
+    p.createCanvas(800, 400);
+    // p.textFont(customFont); //use the custom font for text display
+  p.textAlign(p.TOP, p.TOP); //adjust the anchor point of text alignment to the horizontal and vertical centers
+  p.textSize(238); //make the text 20 pixels in size
+    p5C2  = document.getElementById("defaultCanvas1");
+    p5CTex2 = new THREE.CanvasTexture(p5C2)
+    shaderMaterial.uniforms.uTexture ={
+      value: p5CTex2
+    }
+
+
+    // console.log(material)
+
+  };
+
+  p.draw = function() {
+
+
+
+
+
+      // p.background('rgba(255,255,255,1)')
+
+
+
+
+
+    p.textSize(250);
+
+    p.clear();
+    // let angle1 = p.radians(45);
+    //  p.rotate(angle1);
+        p.text(sportsArr[sportsArrSelected]
+     ,   50 ,  50 )
+
+
+
+   //display text
+  p5CTex2.needsUpdate = true
+
+
+  shaderMaterial.needsUpdate = true
+  };
+};
+
+let sketcHT2 = new p5(sketch2, containerElement2);
 
 
 
@@ -222,26 +267,7 @@ const schoolMaterial = new THREE.MeshBasicMaterial({ map: schoolTextArray[select
         value: Math.random()
       },
       uValueD: {
-        value: Math.floor((Math.random() * 10))
-      },
-      uCuts: {
-        value: 1
-      },
-
-      uMouse: {
-        value: {x: 0.5, y: 0.5}
-      },
-      uResolution: { type: 'v2', value: new THREE.Vector2() },
-      uPosition: {
-        value: {
-          x: 0
-        }
-      },
-      uRotation: {
-        value: 0
-
-
-
+        value: Math.floor((Math.random() * 20))
       }
     }
   })
@@ -349,6 +375,8 @@ if(cuts == eval(first  + array[arraySelect] +  second)){
   shaderMaterial.uniforms.uValueC.value = Math.random()
   shaderMaterial.uniforms.uValueD.value = Math.floor((Math.random() * 10))
   shaderMaterial.needsUpdate = true
+
+  sportsArrSelected = Math.floor(Math.random() * sportsArr.length)
 if(selected < schoolTextArray.length-1 ){
   selected++
 }
