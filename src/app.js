@@ -73,12 +73,12 @@ const sketch = (p) => {
 
 
 
-    p.textSize(50);
+    p.textSize(100);
 
 
           p.fill(`rgba(0,0,${50 }, 1)`)
         p.text(`${first} ${array[arraySelect]}  ${second} =`.toUpperCase()
-     ,   200 ,  200, 450, height )
+     ,   200 ,  150, 450, height )
 
 
    //display text
