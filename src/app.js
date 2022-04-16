@@ -129,7 +129,7 @@ const sketch2 = (p) => {
 
 
 
-      // p.background('rgba(255,255,255,1)')
+      p.fill('rgba(255,255,255,1)')
 
 
 
@@ -142,6 +142,22 @@ const sketch2 = (p) => {
     //  p.rotate(angle1);
         p.text(sportsArr[sportsArrSelected]
      ,   50 ,  50 )
+
+     p.text('%'
+  ,   450 ,  130 )
+
+    p.textSize(50);
+
+  p.text('√'
+,   35 ,  43 )
+
+p.text('π'
+,   235 ,  243 )
+
+
+
+
+
 
 
 
